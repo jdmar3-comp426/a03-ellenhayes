@@ -59,10 +59,10 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
-    let variance = variance(array, (getSum(array)/array.length));
+    let vari = variance(array, (getSum(array)/array.length));
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-        sum = (array[i] - variance)**2;
+        sum = (array[i] - vari)**2;
     }
     sum = sum/array.length;
     sum = Math.sqrt(sum);
@@ -73,8 +73,9 @@ export function getStatistics(array) {
     median:getMedian(array),
     min:Math.min(...array),
     max:Math.max(...array),
-    variance:variance,
+    variance:vari,
     standard_deviation:sum,
-}   
+    }   
+    return result;
 }
 
