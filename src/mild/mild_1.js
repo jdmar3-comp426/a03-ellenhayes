@@ -28,8 +28,9 @@ export function getIncreasingArray(startNumber, endNumber) {
     const arr = [];
     arr[0] = startNumber;
     var diff = endNumber-startNumber; 
+    var lastNumber = startNumber;
     for (let i = 1; i <= diff; i++) {
-        arr[i] = startNumber + 1;
+        arr[i] = lastNumber + 1;
     }
     return arr
 }
@@ -44,7 +45,7 @@ export function getIncreasingArray(startNumber, endNumber) {
 export function maxAndMin(numbers) {
     let min = Math.min(...numbers);
     let max = Math.max(...numbers);
-    return  {min: min, max: max};
+    return  {max: max, min: min};
 }
 
 /**
