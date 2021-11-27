@@ -15,7 +15,11 @@
  *                from calling the function
  */
 export const repeat = (fn, n, ...params) => {
-
+    let result = []
+    for (let i =0; i < n; i++) {
+        result[i] = fn(params);
+    }
+    return result;
 };
 
 
@@ -24,10 +28,12 @@ export const repeat = (fn, n, ...params) => {
  *   10 times.
  */
 export const repeatDemo = () => {
-
+    repeat(hello(), 10, []);
 };
 
-
+export function hello() {
+    console.log('Hello, world!');
+}
 /**************************************************************************
  *
  * Function currying
@@ -41,8 +47,12 @@ export const repeatDemo = () => {
  *   product of num1 and num2.
  */
 export const multiplyBy = (num1) => {
-
+    return mult(num1, num2);
 };
+
+export function mult(num1, num2) {
+    return num1*num2;
+}
 
 
 /**
