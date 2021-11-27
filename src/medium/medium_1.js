@@ -62,10 +62,10 @@ export function getStatistics(array) {
     let vari = variance(array, (getSum(array)/array.length));
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-        sum = sum + ((array[i] - vari)**2);
+        sum = sum + ((array[i] - vari) ** 2);
     }
     sum = sum/array.length;
-    sum = Math.sqrt(sum);
+    stdev = Math.sqrt(sum);
     var result = { 
     length : array.length,
     sum:getSum(array),
@@ -74,7 +74,7 @@ export function getStatistics(array) {
     min:Math.min(...array),
     max:Math.max(...array),
     variance:vari,
-    standard_deviation:sum,
+    standard_deviation:stdev,
     }   
     return result;
 }
