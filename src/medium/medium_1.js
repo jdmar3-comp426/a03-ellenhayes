@@ -62,7 +62,7 @@ export function getStatistics(array) {
     let vari = variance(array, (getSum(array)/array.length));
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-        sum = (array[i] - vari)**2;
+        sum = sum + ((array[i] - vari)**2);
     }
     sum = sum/array.length;
     sum = Math.sqrt(sum);
