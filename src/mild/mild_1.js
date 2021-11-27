@@ -58,9 +58,13 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-    result = { };
+    var result = { };
     for(let i = 0; i < array.length; i++) {
-        
+        var variable = array[i];
+        const newArr = array.filter(function(arrVal) {
+            return arrVal = variable;
+        })
+        result[variable] = newArr.length;
     }
     return result;
 }
