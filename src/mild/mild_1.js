@@ -30,7 +30,8 @@ export function getIncreasingArray(startNumber, endNumber) {
     var diff = endNumber-startNumber; 
     var lastNumber = startNumber;
     for (let i = 1; i <= diff; i++) {
-        arr[i] = lastNumber + 1;
+        arr[i] = lastNumber++;
+        lastNumber++
     }
     return arr
 }
