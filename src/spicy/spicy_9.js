@@ -96,7 +96,7 @@ export const tenTimesFifty = () => {
  *    everyEven([1, 1, 0, 1, 1], x => x === 1)  <--  returns false
  */
 export const everyEven = (arr, test) => {
-    for (i = 0; i < arr.length; i = i+2) {
+    for (let i = 0; i < arr.length; i = i+2) {
         if (!test(arr[i])) {
             return false;
         }
@@ -126,7 +126,7 @@ export const everyEven = (arr, test) => {
  */
 export const someEven = (arr, test) => {
     var count = 0;
-    for (i = 0; i < arr.length; i = i+2) {
+    for (let i = 0; i < arr.length; i = i+2) {
         if (test(arr[i])) {
             count++
         }
@@ -161,9 +161,11 @@ export const filter = (arr, test) => {
     const fail = []
     arr.forEach(element => {
         if (test(element)) {
-            pass.concat(element);
+            const ele = [element]
+            pass.concat(ele);
         } else {
-            fail.concat(element);
+            const ele = [element]
+            fail.concat(ele);
         }
     });
     return {pass:pass, fail: fail}
@@ -189,7 +191,7 @@ export const allEvensAreOdd = (arr) => {
  *   array is an odd number. Use the "someEven" function in this function.
  */
 export const anEvenIsOdd = (arr) => {
-    someEven(arr, x%2 !=0)
+    someEven(arr, x => x%2 !=0)
 };
 
 
