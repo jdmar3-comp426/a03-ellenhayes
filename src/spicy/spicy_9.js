@@ -45,7 +45,7 @@ export const repeatDemo = () => {
  *   product of num1 and num2.
  */
 export const multiplyBy = (num1) => {
-    
+    return num2 => num2*num1;
 };
 
 
@@ -55,9 +55,8 @@ export const multiplyBy = (num1) => {
  * Use the multiplyBy function to create and export a function named
  *   "tenTimes" that multiplies a number by 10.
  */
-export const tenTimes = {
+export const tenTimes = multiplyBy(10); 
 
-}
 
 
 /**
@@ -65,7 +64,7 @@ export const tenTimes = {
  *   function to multiply 50 by 10 and returns the result.
  */
 export const tenTimesFifty = () => {
-    m
+    tenTimes(50);
 };
 
 
