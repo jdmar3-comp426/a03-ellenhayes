@@ -15,9 +15,9 @@
  *                from calling the function
  */
 export const repeat = (fn, n, ...params) => {
-    let result = []
+    const result = {}
     for (let i =0; i < n; i++) {
-        result[i] = fn(params);
+        result[i] = fn(params[i]);
     }
     return result;
 };
@@ -59,7 +59,7 @@ export const multiplyBy = (num1) => {
  *   "tenTimes" that multiplies a number by 10.
  */
 export const tenTimes = {
-    
+
 }
 
 
@@ -96,7 +96,12 @@ export const tenTimesFifty = () => {
  *    everyEven([1, 1, 0, 1, 1], x => x === 1)  <--  returns false
  */
 export const everyEven = (arr, test) => {
-
+    for (i = 0; i < arr.length; i = i+2) {
+        if (!test(arr[i])) {
+            return false;
+        }
+    }
+    return true;
 };
 
 
@@ -120,7 +125,13 @@ export const everyEven = (arr, test) => {
  *    someEven([0, 0, 0, 0, 0], x => x === 0)  <--  returns true
  */
 export const someEven = (arr, test) => {
-
+    var count = 0;
+    for (i = 0; i < arr.length; i = i+2) {
+        if (test(arr[i])) {
+            count++
+        }
+    }
+    return (count >= 1);
 };
 
 
@@ -146,8 +157,18 @@ export const someEven = (arr, test) => {
  *       -->  { pass: [1, 5, 31], fail: [90] }
  */
 export const filter = (arr, test) => {
-
+    const pass = [];
+    const fail = []
+    arr.forEach(element => {
+        if (test(element)) {
+            pass.concat(element);
+        } else {
+            fail.concat(element);
+        }
+    });
+    return {pass:pass, fail: fail}
 };
+
 
 
 /**
@@ -156,8 +177,10 @@ export const filter = (arr, test) => {
  *   odd numbers. Use the "everyEven" function in this function.
  */
 export const allEvensAreOdd = (arr) => {
-
+    return everyEven(arr, x => x%2 != 0)
 };
+
+
 
 
 /**
@@ -166,7 +189,7 @@ export const allEvensAreOdd = (arr) => {
  *   array is an odd number. Use the "someEven" function in this function.
  */
 export const anEvenIsOdd = (arr) => {
-
+    someEven(arr, x%2 !=0)
 };
 
 
@@ -177,5 +200,12 @@ export const anEvenIsOdd = (arr) => {
  *   pass the test. You must use the filter function.
  */
 export const hasExactly = (arr, test, n) => {
+    var count = 0;
+    arr.forEach(element => {
+        if (test(element)) {
+            count++;
+        }
+    });
 
+    return (count == n);
 };
