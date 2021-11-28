@@ -114,106 +114,15 @@ function ratioHybrids(array) {
  */
 export const moreStats = {
     makerHybrids: makerHybrids(mpg_data),
-    avgMpgByYearAndHybrid: undefined
+    avgMpgByYearAndHybrid: avgMpgByYearAndHybrid(mpg_data)
 };
 
 
 
 function makerHybrids(array) {
-    const types = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.make]});
-
-    const noDuplicateTypes = types.reduce(function (previousValue, currentValue) {
-            if (previousValue.indexOf(currentValue) === -1) {
-              previousValue.push(currentValue)
-            }
-            return previousValue}, []);
     
-    noDuplicateTypes.sort();
-        
-    var resultArr = []
-    var result = {}
-
-    for (let i = 0; i < noDuplicateTypes.length; i++) {
-        let getHybrids = array.filter(function (element) {
-            element.make == noDuplicateTypes[i];
-        })
-        let reducedHybrids = getHybrids.reduce(function(previousValue, currentValue) {
-            return [...previousValue, ...currentValue.make]});
-
-        result[make] = noDuplicateTypes[i];
-        result[hybrids] = reducedHybrids.sort;
-
-        resultArr[i] = {result}
-    }
 }
 
 function avgMpgByYearAndHybrid(array) {
-    const years = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.make]});
-
-    const noDuplicateTypes = years.reduce(function (previousValue, currentValue) {
-            if (previousValue.indexOf(currentValue) === -1) {
-              previousValue.push(currentValue)
-            }
-            return previousValue}, []);
-        
-    noDuplicateTypes.sort();
-    var bigresult = {}
-    var resultArr = {}
-    var result = {}
-    var result1 = {}
-
-    for (let i = 0; i < noDuplicateTypes.length; i++) {
-        let getYears = array.filter(function (element) {
-            element.year == noDuplicateTypes[i];
-        })
-
-        let hybrids = getYears.filter(function (element) {
-            element.hybrid == true;
-        })
-            if (hybrids.length != 0) {
-                const arr = hybrids.reduce(function(previousValue, currentValue) {
-                    return [...previousValue, ...currentValue.highway_mpg]});
-                    let sum = getSum(arr);
-                    let length =arr.length;
-                let avg = sum/length;
-
-                const arr2 = hybrids.reduce(function(previousValue, currentValue) {
-                    return [...previousValue, ...currentValue.city_mpg]}); 
-                sum2 = getSum(arr2)
-                length2 = arr2.length;
-
-                result[city] = avg;
-                result[highway] = sum2/length2;
-                result1 = result;
-                resultArr[hybrid] = result1;
-            }
-
-            let notHybrid = getYears.filter(function (element) {
-                element.hybrid == false;
-            })
-                if (notHybrid.length != 0) {
-                    const arr = notHybrid.reduce(function(previousValue, currentValue) {
-                        return [...previousValue, ...currentValue.highway_mpg]});
-                        let sum = getSum(arr);
-                        let length =arr.length;
-                    let avg = sum/length;
-    
-                    const arr2 = notHybrid.reduce(function(previousValue, currentValue) {
-                        return [...previousValue, ...currentValue.city_mpg]}); 
-                    sum2 = getSum(arr2)
-                    length2 = arr2.length;
-    
-                    result[city] = avg;
-                    result[highway] = sum2/length2;
-                    result1 = result;
-                    resultArr[notHybrid] = result1;
-            }
-
-            bigresult[noDuplicateTypes[i]] = resultArr;
-
-    }
-
+   
 }
-
