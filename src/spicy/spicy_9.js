@@ -158,14 +158,16 @@ export const someEven = (arr, test) => {
  */
 export const filter = (arr, test) => {
     const pass = [];
+    var passCount = 0;
     const fail = []
+    var failCount = 0'
     arr.forEach(element => {
         if (test(element)) {
-            const ele = [element]
-            pass.concat(ele);
+            pass[passCount] = element;
+            passCount++;
         } else {
-            const ele = [element]
-            fail.concat(ele);
+            fail[failCount] = element;
+            failCount++;
         }
     });
     return {pass:pass, fail: fail}
@@ -191,7 +193,7 @@ export const allEvensAreOdd = (arr) => {
  *   array is an odd number. Use the "someEven" function in this function.
  */
 export const anEvenIsOdd = (arr) => {
-    someEven(arr, x => x%2 !=0)
+    return someEven(arr, x => x%2 !=0)
 };
 
 
