@@ -30,7 +30,7 @@ function avgMog(array) {
     var highway=0;
     array.forEach(element => {
         city  = city + element.city_mpg;
-        highway = city + element.highway_mpg;
+        highway = highway + element.highway_mpg;
     });
     var length = array.length;
     return {city: city/length, highway: highway/length}
