@@ -26,35 +26,32 @@ export const allCarStats = {
 };
 
 function avgMog(array) {
-    const arr = array.reduce((previousValue, currentValue) => {
-        return [...previousValue, ...currentValue.highway_mpg]}, []);
-    let sum = getSum(arr);
-    let length =arr.length;
-
-    const arr2 = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.city_mpg]}, []); 
-    sum = sum + getSum(arr2);
-    length = length + arr2.length;
-
-    return sum/length;
+    var city =0;
+    var highway=0;
+    array.forEach(element => {
+        city  = city + element.city_mpg;
+        highway = city + element.highway_mpg;
+    });
+    var length = array.length;
+    return {city: city/length, highway: highway/length}
 }
 
 function allYearStats(array) {
-    const arr = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.year]}, []);
-    return getStatistics(arr);
+    const yearsArray = []
+    for (let i = 0; i < array.length; i++) {
+        yearsArray[i] = array.year;
+    }
+    return getStatistics(yearsArray);
 }
 
 function ratioHybrids(array) {
-    const arr = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.hybrid]}, []);
-    let count = 0;
-    arr.forEach(element => {
-        if (element) {
-            count++
-        }
+    var hybrid = 0;
+    array.forEach(element => {
+       if (element.hybrid) {
+           hybrid= hybrid + 1;
+       }
     });
-    let ration = count/arr.length;
+    return hybrid/(array.length);
 }
 
 
