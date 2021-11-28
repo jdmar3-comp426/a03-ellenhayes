@@ -26,13 +26,13 @@ export const allCarStats = {
 };
 
 function avgMog(array) {
-    const arr = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.highway_mpg]},);
+    const arr = array.reduce((previousValue, currentValue) => {
+        return [...previousValue, ...currentValue.highway_mpg]}, []);
     let sum = getSum(arr);
     let length =arr.length;
 
     const arr2 = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.city_mpg]},); 
+        return [...previousValue, ...currentValue.city_mpg]}, []); 
     sum = sum + getSum(arr2);
     length = length + arr2.length;
 
@@ -41,13 +41,13 @@ function avgMog(array) {
 
 function allYearStats(array) {
     const arr = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.year]});
+        return [...previousValue, ...currentValue.year]}, []);
     return getStatistics(arr);
 }
 
 function ratioHybrids(array) {
     const arr = array.reduce(function(previousValue, currentValue) {
-        return [...previousValue, ...currentValue.hybrid]});
+        return [...previousValue, ...currentValue.hybrid]}, []);
     let count = 0;
     arr.forEach(element => {
         if (element) {
