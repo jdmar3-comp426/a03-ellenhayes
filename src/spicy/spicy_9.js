@@ -160,7 +160,7 @@ export const filter = (arr, test) => {
     const pass = [];
     var passCount = 0;
     const fail = []
-    var failCount = 0'
+    var failCount = 0;
     arr.forEach(element => {
         if (test(element)) {
             pass[passCount] = element;
