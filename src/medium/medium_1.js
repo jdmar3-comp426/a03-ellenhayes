@@ -65,7 +65,7 @@ export function getStatistics(array) {
         sum = sum + ((array[i] - vari) ** 2);
     }
     sum = sum/array.length;
-    stdev = Math.sqrt(sum);
+    let stdev = Math.sqrt(sum);
     var result = { 
     length : array.length,
     sum:getSum(array),
