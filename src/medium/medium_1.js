@@ -62,19 +62,19 @@ export function getStatistics(array) {
     let vari = variance(array, (getSum(array)/array.length));
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-        sum = sum + ((array[i] - vari) ** 2);
+        sum = sum + Math.pow((array[i] - vari),2);
     }
     sum = sum/array.length;
-    let stdev = Math.sqrt(sum);
+    var stdev = Math.sqrt(sum);
     var result = { 
     length : array.length,
-    sum:getSum(array),
-    mean:(getSum(array)/array.length),
-    median:getMedian(array),
-    min:Math.min(...array),
-    max:Math.max(...array),
-    variance:vari,
-    standard_deviation:stdev,
+    sum: getSum(array),
+    mean: (getSum(array)/array.length),
+    median: getMedian(array),
+    min: Math.min(...array),
+    max: Math.max(...array),
+    variance: vari,
+    standard_deviation: stdev
     }   
     return result;
 }

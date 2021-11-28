@@ -39,7 +39,7 @@ function avgMog(array) {
 function allYearStats(array) {
     const yearsArray = []
     for (let i = 0; i < array.length; i++) {
-        yearsArray[i] = array.year;
+        yearsArray[i] = array[i].year;
     }
     return getStatistics(yearsArray);
 }
