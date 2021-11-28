@@ -60,16 +60,17 @@ export function getMedian(array) {
  */
 export function getStatistics(array) {
     let vari = variance(array, (getSum(array)/array.length));
+    let mean = getSum(array)/array.length;
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
-        sum = sum + Math.pow((array[i] - vari),2);
+        sum = sum + Math.pow((array[i] - mean),2);
     }
     sum = sum/array.length;
     var stdev = Math.sqrt(sum);
     var result = { 
     length : array.length,
     sum: getSum(array),
-    mean: (getSum(array)/array.length),
+    mean: mean,
     median: getMedian(array),
     min: Math.min(...array),
     max: Math.max(...array),
