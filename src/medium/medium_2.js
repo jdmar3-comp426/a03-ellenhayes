@@ -1,5 +1,5 @@
 import mpg_data from "./data/mpg_data.js";
-import {getStatistics} from "./medium_1.js";
+import {getStatistics, getSum} from "./medium_1.js";
 
 /*
 This section can be done by using the array prototype functions.
@@ -20,10 +20,39 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: avgMog(mpg_data),
+    allYearStats: allYearStats(mpg_data),
+    ratioHybrids: ratioHybrids(mpg_data),
 };
+
+function avgMog(array) {
+    var city =0;
+    var highway=0;
+    array.forEach(element => {
+        city  = city + element.city_mpg;
+        highway = highway + element.highway_mpg;
+    });
+    var length = array.length;
+    return {city: city/length, highway: highway/length}
+}
+
+function allYearStats(array) {
+    const yearsArray = []
+    for (let i = 0; i < array.length; i++) {
+        yearsArray[i] = array[i].year;
+    }
+    return getStatistics(yearsArray);
+}
+
+function ratioHybrids(array) {
+    var hybrid = 0;
+    array.forEach(element => {
+       if (element.hybrid) {
+           hybrid= hybrid + 1;
+       }
+    });
+    return hybrid/(array.length);
+}
 
 
 /**
@@ -84,6 +113,16 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: makerHybrids(mpg_data),
+    avgMpgByYearAndHybrid: avgMpgByYearAndHybrid(mpg_data)
 };
+
+
+
+function makerHybrids(array) {
+    
+}
+
+function avgMpgByYearAndHybrid(array) {
+   
+}
